@@ -1,6 +1,8 @@
 # TestTreeViewAnim
  
- ## What is this?
+https://github.com/yu2924/TestTreeViewAnim/assets/88780921/a7bdbb6a-ea91-4c5b-a24f-4447785e54cb
+
+## What is this?
 
 ユーザがGUIを操作する際に、アニメーションは状態の遷移を把握するのに役立ちます。
 JUCEによるGUIの構築は容易ですが、アニメーションはあまり活用されていません。  
