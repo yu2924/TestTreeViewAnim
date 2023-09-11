@@ -208,22 +208,9 @@ public:
 		int isel = tvisel->getIndexInParent();
 		if(up) { if(isel <= 0) return; }
 		else { if(tviparent->getNumSubItems() - 1 <= isel) return; }
-		juce::Array<juce::TreeViewItem*> items;
-		for(int c = tviparent->getNumSubItems(), i = 0; i < c; ++i)
-		{
-			items.add(tviparent->getSubItem(i));
-		}
-		items.move(isel, up ? (isel - 1) : (isel + 1));
-		struct Cmp
-		{
-			const juce::Array<juce::TreeViewItem*> items;
-			Cmp(const juce::Array<juce::TreeViewItem*>& arr) :items(arr) {}
-			int compareElements(juce::TreeViewItem* a, juce::TreeViewItem* b) const
-			{
-				return items.indexOf(a) - items.indexOf(b);
-			}
-		} cmp(items);
-		tviparent->sortSubItems(cmp);
+		int iselnew = isel + (up ? -1 : 1);
+		tviparent->removeSubItem(isel, false);
+		tviparent->addSubItem(tvisel, iselnew);
 		// trigger the internal updateVisibleItems()
 		resized();
 		triggerAsyncUpdate();
